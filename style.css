@@ -1,0 +1,180 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+/*Primera animacion*/
+
+section{
+    position: relative;
+    text-align: center;
+    height: 200vh;
+
+    animation-timeline: scroll(y) !important;
+}
+
+section article{
+    position: sticky;
+    top: 0%;
+    bottom: 100%;
+    height: 100vh;
+}
+
+section, section article, section article * {
+    animation-timeline: scroll(y) !important;
+    animation-range-start: var(--range-start) !important;
+    animation-range-end: var(--range-end) !important;
+}
+
+h1{
+    font-size: clamp(5px, 10vmin, 3rem);
+}
+
+section#a1{
+    --range-start: 0px;
+    --range-end: 100vh;
+    background-color: #557e9f;
+    color: white;
+
+    animation: secA1 linear 3s;
+}
+
+@keyframes secA1 {
+    from{
+        background-color: #10181e;
+    }
+    to{
+        background-color: #557e9f;
+    }
+}
+
+.row{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 80px;
+    margin-top: 100px;
+}
+
+
+.element{
+    width: 200px;
+    height: 250px;
+    border-radius: 30px;
+    opacity: .5;
+    background: linear-gradient(to bottom, rgb(255, 255, 255), rgba(255, 255, 255, 0));
+    
+    animation: cubitos linear 3s;
+}
+
+@keyframes cubitos{
+    from{
+        height: 0;
+        opacity: 1;
+        background-color: white;
+    }
+    to{
+        height: 250px;
+        opacity: .5;
+        background: linear-gradient(to bottom, rgb(255, 255, 255), rgba(255, 255, 255, 0));
+    }
+}
+
+/*Segunda seccion*/
+
+section#a2 {
+    --range-start: 200vh;
+    --range-end: 300vh;
+}
+
+.main{
+    width: 100%;
+    height: 100vh;
+    background-color: #557e9f;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation:  reducir linear 3s;
+}
+
+.main div{
+    width: 70%;
+    background-color: white;
+    padding: 20px;
+    border-radius: 20px;
+    border: 2px solid #253644;
+}
+
+@keyframes reducir{
+    from{
+        width: 100%;
+    }
+
+    50%{
+        width: 50%;
+    }
+
+    to{
+        width: 100%;
+    }
+}
+
+/*Tersera seccion*/
+
+section#a3 {
+    --range-start: 400vh;
+    --range-end: 500vh;
+}
+
+section#a3 article{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    perspective: 600px;
+}
+
+#cubo{
+    position: relative;
+    color: white;
+
+    width: 100%;
+    height: 300px;
+    max-width: 300px;
+
+    transform-style: preserve-3d;
+    transition: transform 1s ease;
+    aspect-ratio: 1.6;
+
+    transform: rotateY(0);
+    animation: girar linear 3s;
+}
+
+@keyframes girar{
+    from{
+        transform: rotateY(0deg);
+    }
+    
+    to{
+        transform: rotateY(360deg);
+    }
+}
+
+#cubo .front,
+#cubo .back {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  border-radius: 15px;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+}
+
+
+.front{
+    background-color: #253644;
+}
+
+.back{
+    background-color: #557e9f;
+    transform: rotateY(180deg);
+}
